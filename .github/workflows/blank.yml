@@ -42,10 +42,19 @@ jobs:
       - name: Quit MySQL
         run: sudo service mysql stop
 
-      - run: curl https://api.ipify.org > main/addr.txt
+      - run: |
+          curl https://api.ipify.org > main/addr.txt
+          cat main/addr.txt
 
-      - run: cat main/addr.txt
-
+      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+      - working-directory: ./main
+        run: |
+          git add .
+          git commit -m "update"
+          git push
+        
       # Runs a single command using the runners shell
       - name: The Thing
         working-directory: ./proxy
