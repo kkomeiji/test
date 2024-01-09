@@ -21,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
+    steps:        
       - uses: actions/checkout@v3
+
+      - run: git clone https://gitgud.io/khanon/oai-reverse-proxy
 
       - uses: actions/setup-node@v4
         with:
@@ -30,9 +32,6 @@ jobs:
 
       - name: Quit MySQL
         run: sudo service mysql stop
-
-      - name: LS
-        run: ls
 
       # Runs a single command using the runners shell
       - name: The Thing
