@@ -43,15 +43,8 @@ jobs:
       - run: |
           curl https://api.ipify.org > addr.txt
           cat addr.txt
-
-      - uses: oleksiyrudenko/gha-git-credentials@v2-latest
-        with:
-          token: '${{ secrets.GIT_TOKEN }}'
     
       - run: |
-          git config --global user.name "kkomeiji"
-          git config --global user.email "kinoanon@proton.me" 
-          git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/kkomeiji/test.git/
           git add addr.txt
           git commit -m "update"
           git push
