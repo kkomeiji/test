@@ -32,15 +32,15 @@ jobs:
         with:
           node-version: 18
 
-      - run: cd proxy
-
       - run: ls .
+        working-directory: ./proxy
 
       - name: Quit MySQL
         run: sudo service mysql stop
 
       # Runs a single command using the runners shell
       - name: The Thing
+        working-directory: ./proxy
         run: |
           chmod +x exec_app.sh 
           bash exec_app.sh
