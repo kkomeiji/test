@@ -31,6 +31,9 @@ jobs:
       - name: Quit MySQL
         run: sudo service mysql stop
 
+      - name: LS
+        run: ls
+
       # Runs a single command using the runners shell
       - name: The Thing
         run: |
