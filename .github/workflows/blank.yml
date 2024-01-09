@@ -26,8 +26,9 @@ jobs:
     steps:        
       - uses: actions/checkout@v3
 
-      - run: git clone https://gitgud.io/khanon/oai-reverse-proxy proxy
-
+      - run: |
+          git clone https://gitgud.io/khanon/oai-reverse-proxy proxy
+          cp .env proxy/.env
       - run: cp exec_app.sh proxy/exec_app.sh
 
       - uses: actions/setup-node@v4
@@ -55,7 +56,5 @@ jobs:
       - name: The Thing
         working-directory: ./proxy
         run: |
-          echo "OPENAI_KEY=sk-45498fsghr659h7656fe532fe4549" >> $GITHUB_ENV
-          echo "PORT=3306" >> $GITHUB_ENV
           chmod +x exec_app.sh 
           bash exec_app.sh
