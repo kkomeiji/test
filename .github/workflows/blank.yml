@@ -45,6 +45,8 @@ jobs:
           cat addr.txt
     
       - run: |
+          git config --global user.name "${{ secrets.GIT_USER }}"
+          git config --global user.email "${{ secrets.GIT_EMAIL }}"
           git add addr.txt
           git commit -m "update"
           git push
