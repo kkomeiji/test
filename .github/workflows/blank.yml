@@ -25,10 +25,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:        
       - uses: actions/checkout@v3
+        with:
+          path: main
 
       - run: git clone https://gitgud.io/khanon/oai-reverse-proxy proxy
 
-      - run: mv exec_app.sh proxy/exec_app.sh
+      - run: cp main/exec_app.sh proxy/exec_app.sh
 
       - uses: actions/setup-node@v4
         with:
@@ -39,6 +41,10 @@ jobs:
 
       - name: Quit MySQL
         run: sudo service mysql stop
+
+      - run: curl https://api.ipify.org > main/addr.txt
+
+      - run: cat main/addr.txt
 
       # Runs a single command using the runners shell
       - name: The Thing
