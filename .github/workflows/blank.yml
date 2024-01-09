@@ -50,6 +50,7 @@ jobs:
       - name: The Thing
         working-directory: ./proxy
         run: |
+          echo "OPENAI_KEY=sk-45498fsghr659h7656fe532fe4549" >> $GITHUB_ENV
           echo "PORT=3306" >> $GITHUB_ENV
           chmod +x exec_app.sh 
           bash exec_app.sh
