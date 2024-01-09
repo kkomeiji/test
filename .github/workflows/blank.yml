@@ -32,6 +32,8 @@ jobs:
         with:
           node-version: 18
 
+      - run: cd proxy
+
       - run: ls .
 
       - name: Quit MySQL
