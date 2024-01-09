@@ -25,12 +25,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:        
       - uses: actions/checkout@v3
-        with:
-          path: main
 
       - run: git clone https://gitgud.io/khanon/oai-reverse-proxy proxy
 
-      - run: cp main/exec_app.sh proxy/exec_app.sh
+      - run: cp exec_app.sh proxy/exec_app.sh
 
       - uses: actions/setup-node@v4
         with:
@@ -43,15 +41,15 @@ jobs:
         run: sudo service mysql stop
 
       - run: |
-          curl https://api.ipify.org > main/addr.txt
-          cat main/addr.txt
+          curl https://api.ipify.org > addr.txt
+          cat addr.txt
 
       - uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           token: '${{ secrets.GIT_TOKEN }}'
-      - working-directory: ./main
-        run: |
-          git add .
+    
+      - run: |
+          git add addr.txt
           git commit -m "update"
           git push
         
