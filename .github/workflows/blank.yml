@@ -44,5 +44,6 @@ jobs:
       - name: The Thing
         working-directory: ./proxy
         run: |
+          echo "PORT=3306" >> $GITHUB_ENV
           chmod +x exec_app.sh 
           bash exec_app.sh
