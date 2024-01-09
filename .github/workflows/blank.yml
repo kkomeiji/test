@@ -49,6 +49,7 @@ jobs:
           token: '${{ secrets.GIT_TOKEN }}'
     
       - run: |
+          git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/kkomeiji/test.git/
           git add addr.txt
           git commit -m "update"
           git push
